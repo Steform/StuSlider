@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>HTML5 Slider Test</title>
+
+        <style>
+
+            /* just for demo */
+            body {font-family: Arial, sans-serif;margin: 0;padding: 0}
+            .centered-content {display: flex;flex-direction: column; align-items: center; justify-content: center; height: 100%; text-align: center}
+
+            .first-slide {color: #FFF;text-shadow: 2px 2px 2px #000;background-image: url('assets-demo/ste-workspace.jpg'); background-size: cover;
+                background-position: center; background-repeat: no-repeat}
+        
+            .second-slide {color: #000;text-shadow: 2px 2px 2px #FFF;background-image: url('assets-demo/ste-workspace-white.jpg'); background-size: cover;
+                background-position: center; background-repeat: no-repeat}
+            
+            .third-slide {color: #FFF;text-shadow: 2px 2px 2px #000;background-image: url('assets-demo/ste-workspace.jpg'); background-size: cover;
+                background-position: center; background-repeat: no-repeat}
+
+            .last-slide {color: #000;text-shadow: 2px 2px 2px #FFF;background-image: url('assets-demo/ste-workspace-white.jpg'); background-size: cover;
+                background-position: center; background-repeat: no-repeat}
+            
+                
+            .integration-content{ width: 80%; margin: 0 auto; margin-top:3%}
+
+            .stu-slide h1{font-size: 3rem}
+            .stu-slide h2{font-size: 2.8rem}
+            .stu-slide p{font-size: 1.5rem}
+            .stu-slide li{font-size: 1.5rem}
+            .stu-slide code{font-size: 1.3rem}
+
+            .stu-slider-container{min-height:900px}
+
+        </style>
+        
+    </head>
+    <body>
+        <!-- first container that encapsulate all of the slider with stu-slider-container class -->
+        <div class="stu-slider-container">
+            <!-- here your slider start with the stu-slider class -->
+            <div class="stu-slider">
+
+                <!-- here is all your slide -->
+                <div class="stu-slide first-slide">
+                    <div class="centered-content">
+                        <h1>StuSlider - by HIRT Stephane</h1>
+                        <p>A new, very simple slider with no dependencies other than javascript and html5.</p>
+                        <ul>
+                            <li>💡 Smooth, responsive transition</li>
+                            <li>🖱 Easy control with buttons and navigation</li>
+                            <li>⏰ Automatic scrolling with pause option</li>
+                        </ul>
+                        <p><a href="https://github.com/Steform" target="_blank" style="color: #FFF; text-decoration: underline;">My Github</a></p>
+                    </div>
+                </div>
+
+                <div class="stu-slide second-slide">
+                    <div class="centered-content">
+                        <h2>Key Features</h2>
+                        <p>A new, very simple slider with no dependencies other than JavaScript and HTML5.</p>
+                        <ul>
+                            <li>💡 Dots and arrows for simple navigation</li>
+                            <li>⏸️ Pause and play feature</li>
+                            <li>🎨 Customizable: with arrows or not, with dots or not, with pause or not</li>
+                        </ul>
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="stu-slide third-slide">
+                    <div class="integration-content">
+                        <h2>Integrating StuSlider</h2>
+                        <p>Integrating StuSlider into your project is straightforward and easy. Follow these simple steps to get started:</p>
+                        <ol>
+                            <li>First, make sure you've imported the 'stuslider.js' JavaScript file into your project by including the following script tag at the bottom of your HTML page:</li>
+                        </ol>
+                        <pre><code>&lt;script src="stuslider.js"&gt;&lt;/script&gt;</code></pre>
+                        <ol start="2">
+                            <li>Next, define the HTML structure for your slider by creating a container for the slider and individual slide elements. Use the following structure as a template:</li>
+                        </ol>
+                        <pre><code>&lt;div class="stu-slider-container"&gt;
+                    &lt;div class="stu-slider"&gt;
+                        &lt;div class="stu-slide"&gt;Your content here&lt;/div&gt;
+                        &lt;div class="stu-slide"&gt;Another slide content&lt;/div&gt;
+                        &lt;div class="stu-slide"&gt;More content for another slide&lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;</code></pre>
+                        <ol start="3">
+                            <li>Create an instance of StuSlider for each slider you want to display on your page. Customize the parameters as needed. Here's an example:</li>
+                        </ol>
+                        <pre><code>&lt;script type="text/javascript"&gt;
+                    // Create an instance of StuSlider
+                    const slider1 = new StuSlider('stu-slider', 3000, '100%', '100vh', 1, 1, 1, 1);
+                &lt;/script&gt;</code></pre>
+                        <p>With these simple steps, you can integrate StuSlider into your project and customize it according to your requirements. Enjoy using StuSlider for your web projects!</p>
+                    </div>
+                </div>
+                
+                <div class="stu-slide last-slide">
+
+                    <div class="integration-content">
+                        <h2>Meet the Developer</h2>
+                        <p>Allow me to introduce myself! I'm Stéphane Hirt, the developer behind StuSlider.</p>
+                        <p>With a passion for web development, I crafted StuSlider to provide a simple and versatile solution for creating stunning sliders.</p>
+                        <p>My goal was to make a slider that's easy to use, highly customizable, and lightweight in terms of dependencies.</p>
+                        <p>Visit my GitHub profile to explore more of my projects, collaborations, and open-source contributions.</p>
+                        <p>Feel free to connect, collaborate, or just say hello! I'm always excited to engage with fellow developers and creators.</p>
+                        <p><a href="https://github.com/Steform" target="_blank" class="github-link">Visit My GitHub</a></p>
+                    </div>
+
+                </div>
+            </div>
+        </div>    
+    </body>
+    <script src="stuslider.js"></script>
+    
+    <!-- This script is for this demo, you can reproduce this on your project -->
+    <script type="text/javascript">
+
+        /* create instance of the slider */
+        const slider1 = new StuSlider(sliderClass='stu', sliderDelay=6000, sliderWidth='100%', sliderHeight='100vh', showArrow=1, showDots=1, showPause=1, showAbout=1);
+
+
+    </script>
+</html>
