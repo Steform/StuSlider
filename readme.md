@@ -22,9 +22,9 @@ You can do that at the bottom of your page/view/template like this:
 
 After importing the JavaScript file, you need to define your slider in your HTML code.
 
-1. Create a main <div> with a class name ending with "-slider-container," where the beginning of the name is the unique slider identifier. For example, "stu-slider-container" could be your slider container.
+1. Create a main `<div>` with a class name ending with "-slider-container," where the beginning of the name is the unique slider identifier. For example, "stu-slider-container" could be your slider container.
 
-2. Inside this container, create a child <div> with the class name "stu-slider" to represent your slider.
+2. Inside this container, create a child `<div>` with the class name "stu-slider" to represent your slider.
 
 3. Add as many slide elements as you need, and each should have a class name following the pattern "stu-slide." You can customize the content of each slide as per your requirements.
 
