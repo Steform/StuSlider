@@ -37,7 +37,7 @@ class StuSlider{
             clearInterval(this.autoSlideTimer);
         }
 
-        // How many pixels in percentage represent a slide in width
+        // How many percent represent a slide (translate x)
         this.slideWidthPercentage = 100 / this.slides.length;
 
         // Binding the methods to the instance
@@ -295,7 +295,7 @@ class StuSlider{
         });
     
         if (this.showDots == 1){
-            // Sélectionnez les labels de radio spécifiques à cette instance
+            // Select the radio labels of this instance
             const radioLabels = this.navigationDiv.querySelectorAll(`.${this.sliderClass}-radio-label`);
             radioLabels.forEach((label, index) => {
                 label.classList.toggle(`active`, index === this.currentSlide);
@@ -363,7 +363,6 @@ class StuSliderCss{
             color: #0056b3; 
         }
 
-        /* Media query pour les écrans de largeur maximale de 768px (tablette) */
         @media (max-width: 768px) {
             .${sliderClass}-left-arrow,
             .${sliderClass}-right-arrow {
@@ -373,7 +372,6 @@ class StuSliderCss{
             }
         }
 
-        /* Media query pour les écrans de largeur maximale de 480px (mobile) */
         @media (max-width: 480px) {
             .${sliderClass}-left-arrow,
             .${sliderClass}-right-arrow {
@@ -477,16 +475,16 @@ class StuSliderCss{
         }
 
         .${sliderClass}-AboutInfo {
-            position: fixed;  /* Positionné par rapport à l'écran/viewport */
+            position: fixed;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: rgba(0, 0, 0, 0.7); /* Noir avec 80% d'opacité */
-            z-index: 9999; /* Assurez-vous qu'il s'affiche au-dessus de tout */
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 9999;
             display: flex;
-            align-items: center;      /* Centrage vertical */
-            justify-content: center;  /* Centrage horizontal */
+            align-items: center;
+            justify-content: center;
         }
         `;
         document.head.appendChild(style);
