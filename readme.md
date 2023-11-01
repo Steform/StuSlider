@@ -2,13 +2,13 @@
 
 ## Origin
 
-This slider was created to replace an older one, the FlexSlider 2:
-
-FlexSlider 2
+This slider was created to replace an older one, [the FlexSlider 2](http://flexslider.woothemes.com/):
 
 With its replacement in mind, and to validate my JavaScript skills, I set about writing my own customizable slider.
 
-## Project Importation
+Here is the [demo link](https://steform.github.io/StuSlider/) of my slider, you can see the result to decide if this StuSlider meets your needs
+
+## Project Importation
 
 To use the 'StuSlider' Class, you must import the 'stuslider.js' JavaScript file into your project.
 
