@@ -273,9 +273,11 @@ class StuSlider{
         this.slider.style.transform = `translateX(-${index * this.slideWidthPercentage}%)`;
         this.currentSlide = index;
         
-        // Check if slider is in pause mode
-        if (!this.pauseInput.checked) {
-            this.resetAutoSlideTimer();
+        if (this.showPause == 1) {
+            // Check if slider is in pause mode
+            if (!this.pauseInput.checked) {
+                this.resetAutoSlideTimer();
+            }
         }
         
         // Updating active slide
@@ -292,11 +294,13 @@ class StuSlider{
             slide.classList.toggle(`active`, index === this.currentSlide);
         });
     
-        // Sélectionnez les labels de radio spécifiques à cette instance
-        const radioLabels = this.navigationDiv.querySelectorAll(`.${this.sliderClass}-radio-label`);
-        radioLabels.forEach((label, index) => {
-            label.classList.toggle(`active`, index === this.currentSlide);
-        });
+        if (this.showDots == 1){
+            // Sélectionnez les labels de radio spécifiques à cette instance
+            const radioLabels = this.navigationDiv.querySelectorAll(`.${this.sliderClass}-radio-label`);
+            radioLabels.forEach((label, index) => {
+                label.classList.toggle(`active`, index === this.currentSlide);
+            });
+        }
     }    
 
 }
