@@ -4,13 +4,15 @@
 
 This slider was created to replace an older one, [the FlexSlider 2](http://flexslider.woothemes.com/):
 
-With its replacement in mind, and to validate my JavaScript skills, I set about writing my own customizable slider.
+With this replacement in mind, and to validate my JavaScript skills, I set about writing my own customizable slider.
 
-Here is the [demo link](https://steform.github.io/StuSlider/) of my slider, you can see the result to decide if this StuSlider meets your needs
+Here is the [demo link](https://steform.github.io/StuSlider/) of my slider, you can see the result to decide if this StuSlider meets your needs.
 
-## Project Importation
+You can also find the demo in the `demo` folder of this repository.
 
-To use the 'StuSlider' Class, you must import the 'stuslider.js' JavaScript file into your project.
+## How to import
+
+To use the 'StuSlider' Class, you must import the 'stuslider.js' (and the source maps if you want to) JavaScript file into your project.
 
 You can do that at the bottom of your page/view/template like this:
 
@@ -18,9 +20,11 @@ You can do that at the bottom of your page/view/template like this:
 <script src="stuslider.js"></script>
 ```
 
+You can build a new script with `npm run build` after having installed the dependencies.
+
 ## Setting Up the HTML Structure
 
-After importing the JavaScript file, you need to define your slider in your HTML code.
+After importing the JavaScript file, you need to configure your slider in your HTML code.
 
 1. Create a main `<div>` with a class name ending with "-slider-container," where the beginning of the name is the unique slider identifier. For example, "stu-slider-container" could be your slider container.
 
@@ -71,26 +75,28 @@ or
 </script>
 ```
 
-### Needed parameters for creating an instance
+### Required parameters for creating an instance
 
 As you can see, there are configurable parameters, some of which are mandatory:
 
-1. sliderClass => The name of the CSS class to avoid conflicts with other elements.
-2. sliderDelay => The delay between two slides in milliseconds.
-3. sliderWidth => The width (you can use percentages, vw sizes, pixel sizes; it's flexible).
-4. sliderHeight => The height (as flexible as the width).
+1. `sliderClass` => The name of the CSS class to avoid conflicts with other elements.
+2. `sliderDelay` => The delay between two slides in milliseconds.
+3. `sliderWidth` => The width (you can use percentages, vw sizes, pixel sizes; it's flexible).
+4. `sliderHeight` => The height (as flexible as the width).
 
 
 ### Optional parameters
 
 Some parameters are optional and have default values:
 
-1. showArrow => By default, arrows are visible (value is normally true), set to 0 if not needed.
-2. showDots => By default, dots for slides are visible (default value is normally true), set to 0 if not needed.
-3. showPause => By default, the pause button is visible (default value is normally true), set to 0 if not needed.
-4. showDots => By default, the about button is visible (default value is normally true), set to 0 if not needed.
+1. `showArrow` => By default, arrows are visible (default is true), set to false if not needed.
+2. `showDots` => By default, dots for slides are visible (default is true), set to false if not needed.
+3. `showPause` => By default, the pause button is visible (default is true), set to false if not needed.
+4. `showDots` => By default, the about button is visible (default is true), set to false if not needed.
+5. `showAbout` => By default, the about button is visible (default is true), set to false if not needed.
+6. `defaultSlide` => By default, the slider starts with the first slide (default value is  `0`), set to the slide number you want to start with if needed.
 
 ## Licence
 
-This slider was created by Stéphane Hirt. You can find more information and the source code on GitHub and the license is provided with the code
+This slider was created by Stéphane Hirt. You can find more information and the source code on GitHub and the license is provided with the code.
 
