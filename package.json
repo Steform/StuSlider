@@ -1,0 +1,25 @@
+{
+  "name": "stuslider",
+  "version": "1.0.0",
+  "description": "## Origin",
+  "main": "slider.js",
+  "scripts": {
+    "build": "tsc && cp ./dist/stuslider.js demo/stuslider.js && cp ./dist/stuslider.js.map demo/stuslider.js.map && cp ./dist/stuslider.js stuslider.js && cp ./dist/stuslider.js.map stuslider.js.map"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Steform/StuSlider.git"
+  },
+  "keywords": [
+    "slider"
+  ],
+  "author": "Stéphane Hirt",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Steform/StuSlider/issues"
+  },
+  "homepage": "https://github.com/Steform/StuSlider#readme",
+  "devDependencies": {
+    "typescript": "^5.2.2"
+  }
+}
