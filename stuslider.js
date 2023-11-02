@@ -113,7 +113,8 @@ var StuSlider = /** @class */ (function () {
             });
         }
         if (this.showDots && this.slides.length > 1) {
-            this.sliderContainer.appendChild(this.navigationDiv);
+            this.controlDiv.appendChild(this.navigationDiv);
+            //this.sliderContainer.appendChild(this.navigationDiv);
         }
     };
     StuSlider.prototype.displayPauseDiv = function () {

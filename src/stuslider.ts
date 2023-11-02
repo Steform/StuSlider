@@ -153,7 +153,7 @@ class StuSlider{
             });
         }
         if(this.showDots && this.slides.length > 1){
-            this.sliderContainer.appendChild(this.navigationDiv);
+            this.controlDiv.appendChild(this.navigationDiv);
         }
     }
 
