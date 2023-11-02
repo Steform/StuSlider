@@ -450,7 +450,7 @@ class StuSliderCss{
             transform: translateY(1px);
         }
 
-        .${sliderClass}-AboutInfo {
+        .${sliderClass}-aboutinfo {
             position: fixed;
             top: 0;
             left: 0;
