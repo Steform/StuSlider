@@ -1,8 +1,8 @@
 {
   "name": "stuslider",
-  "version": "1.0.0",
+  "version": "0.3.0",
   "description": "## Origin",
-  "main": "slider.js",
+  "main": "stuslider.js",
   "scripts": {
     "build": "tsc && cp ./dist/stuslider.js demo/stuslider.js && cp ./dist/stuslider.js.map demo/stuslider.js.map && cp ./dist/stuslider.js stuslider.js && cp ./dist/stuslider.js.map stuslider.js.map"
   },
