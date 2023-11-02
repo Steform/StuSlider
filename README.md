@@ -6,7 +6,7 @@ This slider was created to replace an older one, [the FlexSlider 2](http://flexs
 
 With this replacement in mind, and to validate my JavaScript skills, I set about writing my own customizable slider.
 
-Here is the [demo link](https://steform.github.io/StuSlider/) of my slider, you can see the result to decide if this StuSlider meets your needs.
+Here is the [demo link](https://steform.github.io/StuSlider/demo/) of my slider, you can see the result to decide if this StuSlider meets your needs.
 
 You can also find the demo in the `demo` folder of this repository.
 
