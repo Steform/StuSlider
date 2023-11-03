@@ -156,11 +156,11 @@ var StuSlider = /** @class */ (function () {
                 var _a;
                 // pause or play
                 if (_this.pauseInput.checked) {
-                    _this.pauseLabel.innerHTML = '<i class="fa-solid fa-pause"></i>';
+                    _this.pauseLabel.innerHTML = '<i class="fa-solid fa-play"></i>';
                     clearInterval((_a = _this.autoSlideTimer) !== null && _a !== void 0 ? _a : 0);
                 }
                 else {
-                    _this.pauseLabel.innerHTML = '<i class="fa-solid fa-play"></i>';
+                    _this.pauseLabel.innerHTML = '<i class="fa-solid fa-pause"></i>';
                     _this.resetAutoSlideTimer();
                 }
             });

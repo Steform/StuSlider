@@ -203,10 +203,10 @@ class StuSlider{
             this.pauseInput.addEventListener('change', () => {
                 // pause or play
                 if (this.pauseInput.checked) {
-                    this.pauseLabel.innerHTML = '<i class="fa-solid fa-pause"></i>';
+                    this.pauseLabel.innerHTML = '<i class="fa-solid fa-play"></i>';
                     clearInterval(this.autoSlideTimer ?? 0);
                 } else {
-                    this.pauseLabel.innerHTML = '<i class="fa-solid fa-play"></i>';
+                    this.pauseLabel.innerHTML = '<i class="fa-solid fa-pause"></i>';
                     this.resetAutoSlideTimer();
                 }
             });
