@@ -97,7 +97,7 @@ class StuSlider{
                     <div style="max-width: 600px; padding: 20px; color: #FFF; font-size: 1.2em; text-align: center;">
                         <h2>StuSlider - by HIRT Stephane</h2>
                         <p>A new, very simple slider with no dependencies other than javascript and html5.</p>
-                        <ul>
+                        <ul style="list-style: none;">
                             <li>💡 Smooth, responsive transition</li>
                             <li>🖱 Easy control with buttons and navigation</li>
                             <li>⏰ Automatic scrolling with pause option</li>
