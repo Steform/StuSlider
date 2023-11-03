@@ -37,6 +37,21 @@ var StuSlider = /** @class */ (function () {
         // display the slider
         this.displaySlider();
     }
+    // Créez une fonction pour ajouter la balise <link> au header
+    StuSlider.prototype.addFontAwesome = function () {
+        var scriptElement = document.createElement('script');
+        scriptElement.src = 'https://kit.fontawesome.com/e16b28c453.js';
+        scriptElement.crossOrigin = 'anonymous';
+        // Sélectionnez le <head> de votre document
+        var headElement = document.head;
+        // Ajoutez le script au <head>
+        if (headElement) {
+            headElement.appendChild(scriptElement);
+        }
+        else {
+            console.error("Le <head> de la page n'a pas été trouvé.");
+        }
+    };
     StuSlider.prototype.displayAbout = function () {
         if (this.showAbout) {
             // create about 
@@ -73,12 +88,12 @@ var StuSlider = /** @class */ (function () {
             // create left arrow div
             this.leftArrowDiv = document.createElement('div');
             this.leftArrowDiv.className = "".concat(this.sliderClassPrefix, "-left-arrow");
-            this.leftArrowDiv.innerHTML = '&#x25C0;';
+            this.leftArrowDiv.innerHTML = '<i class="fa-solid fa-caret-left"></i>';
             this.leftArrowDiv.onclick = function () { return _this.goToPreviousSlide(); };
             // create right arrow div
             this.rightArrowDiv = document.createElement('div');
             this.rightArrowDiv.className = "".concat(this.sliderClassPrefix, "-right-arrow");
-            this.rightArrowDiv.innerHTML = '&#x25B6;';
+            this.rightArrowDiv.innerHTML = '<i class="fa-solid fa-caret-right"></i>';
             this.rightArrowDiv.onclick = function () { return _this.goToNextSlide(); };
         }
         if (this.showArrow && this.slides.length > 1) {
@@ -135,17 +150,17 @@ var StuSlider = /** @class */ (function () {
             this.pauseLabel = document.createElement('label');
             this.pauseLabel.classList.add("".concat(this.sliderClassPrefix, "-button-label"));
             this.pauseLabel.htmlFor = "".concat(this.sliderClassPrefix, "-pause-input");
-            this.pauseLabel.innerHTML = "\u23F8";
+            this.pauseLabel.innerHTML = '<i class="fa-solid fa-pause"></i>';
             // pause event (check / uncheck)
             this.pauseInput.addEventListener('change', function () {
                 var _a;
                 // pause or play
                 if (_this.pauseInput.checked) {
-                    _this.pauseLabel.innerHTML = "\u23F5";
+                    _this.pauseLabel.innerHTML = '<i class="fa-solid fa-pause"></i>';
                     clearInterval((_a = _this.autoSlideTimer) !== null && _a !== void 0 ? _a : 0);
                 }
                 else {
-                    _this.pauseLabel.innerHTML = "\u23F8";
+                    _this.pauseLabel.innerHTML = '<i class="fa-solid fa-play"></i>';
                     _this.resetAutoSlideTimer();
                 }
             });
@@ -162,6 +177,7 @@ var StuSlider = /** @class */ (function () {
         // create control div
         this.controlDiv = document.createElement('div');
         this.controlDiv.className = "".concat(this.sliderClassPrefix, "-control");
+        this.addFontAwesome();
         this.displayDots();
         this.displayPauseDiv();
         this.displayAbout();
@@ -226,7 +242,7 @@ var StuSlider = /** @class */ (function () {
 var StuSliderCss = /** @class */ (function () {
     function StuSliderCss(sliderClass, sliderWidth, sliderHeight) {
         var style = document.createElement('style');
-        style.innerHTML = "\n        .".concat(sliderClass, "-slider-container {\n            overflow: hidden;\n            position: relative;\n            width: ").concat(sliderWidth, ";\n            height: ").concat(sliderHeight, ";\n        }\n\n        .").concat(sliderClass, "-slider {\n            display: flex;\n            width: 400%;\n            height: 100%;\n            transition: transform 0.6s ease;\n        }\n\n        .").concat(sliderClass, "-left-arrow, \n        .").concat(sliderClass, "-right-arrow {\n            position: absolute;\n            top: 50%;\n            transform: translateY(-50%);\n            width: 1.5vw;\n            height: 1.5vw;\n            font-size: 1.5vw;\n            opacity: 0.6;\n            color: #333;\n            cursor: pointer;\n            z-index: 1000;\n            user-select: none;\n            text-shadow: 0 0 5px white; \n        }    \n\n        .").concat(sliderClass, "-left-arrow {\n            left: 1.5%;\n        }\n\n        .").concat(sliderClass, "-right-arrow {\n            right: 1.5%;\n        }\n\n\n        .").concat(sliderClass, "-left-arrow:hover {\n            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);\n            color: #0056b3; \n        }\n\n        .").concat(sliderClass, "-right-arrow:hover {\n            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);\n            color: #0056b3; \n        }\n\n        @media (max-width: 768px) {\n            .").concat(sliderClass, "-left-arrow,\n            .").concat(sliderClass, "-right-arrow {\n                width: 3vw;\n                height: 3vw;\n                font-size: 3vw;\n            }\n        }\n\n        @media (max-width: 480px) {\n            .").concat(sliderClass, "-left-arrow,\n            .").concat(sliderClass, "-right-arrow {\n                width: 6.5vw;\n                height: 6.5vw;\n                font-size: 6.5vw;\n            }\n        }\n\n        @media screen and (max-width: 767px){\n\n            .").concat(sliderClass, "-slider-container {\n                height: 380px;\n            }\n\n        }\n\n        .").concat(sliderClass, "-slide {\n            flex: 0 0 25%;\n            height: 100%;\n            opacity: 1; /* Opacit\u00E9 par d\u00E9faut pour tous les slides */\n        }\n\n        .").concat(sliderClass, "-slide.active {\n            opacity: 1; /* Opacit\u00E9 pour le slide actif */\n        }\n\n        .").concat(sliderClass, "-control {\n            display: flex;\n            justify-content: center;\n            margin-top: -60px;\n        }\n\n        .").concat(sliderClass, "-navigation label {\n            width: 11px;\n            height: 11px;\n            margin: 5px;\n            cursor: pointer;\n            background-color: #333;\n            opacity: 0.6;\n            border-radius: 50%;\n            display: inline-block;\n            box-shadow: 0 0 1px 1px white;\n        }\n\n        .").concat(sliderClass, "-navigation label.active {\n            opacity: 0.6; /* Opacit\u00E9 pour le bouton actif */\n        }\n\n        .").concat(sliderClass, "-navigation label:hover{\n\n            background-color: #0056b3; \n\n        }\n\n        .").concat(sliderClass, "-radio {\n            display: none;\n        }\n\n        .").concat(sliderClass, "-pause {\n\n            z-index: 1000;\n            margin-left:10px;\n\n        }\n\n        .").concat(sliderClass, "-pause-checkbox{\n\n            display:none;\n        }\n\n        .").concat(sliderClass, "-button-label{\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            padding: 2px 0px;\n            width: 28px;\n            height: 28px;\n            background-color: #333;\n            color: #FFFFFF; \n            border: none; \n            border-radius: 4px;\n            cursor: pointer;\n            text-decoration: none; \n            font-family: Arial, sans-serif; \n            transition: background-color 0.3s; \n            opacity: 0.6;\n            user-select: none;\n            box-shadow: 0 0 1px 1px white;\n            margin: 0px;\n            margin-right:10px;\n        }\n\n        .").concat(sliderClass, "-button-label:hover{\n            background-color: #0056b3; \n        }\n\n        .").concat(sliderClass, "-pause-label:active {\n            background-color: #004299; \n            transform: translateY(1px);\n        }\n\n        .").concat(sliderClass, "-aboutinfo {\n            position: fixed;\n            top: 0;\n            left: 0;\n            right: 0;\n            bottom: 0;\n            background-color: rgba(0, 0, 0, 0.7);\n            z-index: 9999;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n        }\n        ");
+        style.innerHTML = "\n        .".concat(sliderClass, "-slider-container {\n            overflow: hidden;\n            position: relative;\n            width: ").concat(sliderWidth, ";\n            height: ").concat(sliderHeight, ";\n        }\n\n        .").concat(sliderClass, "-slider {\n            display: flex;\n            width: 400%;\n            height: 100%;\n            transition: transform 0.6s ease;\n        }\n\n        .").concat(sliderClass, "-left-arrow, \n        .").concat(sliderClass, "-right-arrow {\n            position: absolute;\n            top: 50%;\n            transform: translateY(-50%);\n            width: 1.5vw;\n            height: 1.5vw;\n            font-size: 3vw;\n            opacity: 0.6;\n            color: #333;\n            cursor: pointer;\n            z-index: 1000;\n            user-select: none;\n            text-shadow: 0 0 5px white; \n        }    \n\n        .").concat(sliderClass, "-left-arrow {\n            left: 1.5%;\n        }\n\n        .").concat(sliderClass, "-right-arrow {\n            right: 1.5%;\n        }\n\n\n        .").concat(sliderClass, "-left-arrow:hover {\n            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);\n            color: #0056b3; \n        }\n\n        .").concat(sliderClass, "-right-arrow:hover {\n            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);\n            color: #0056b3; \n        }\n\n        @media (max-width: 768px) {\n            .").concat(sliderClass, "-left-arrow,\n            .").concat(sliderClass, "-right-arrow {\n                width: 3vw;\n                height: 3vw;\n                font-size: 3vw;\n            }\n        }\n\n        @media (max-width: 480px) {\n            .").concat(sliderClass, "-left-arrow,\n            .").concat(sliderClass, "-right-arrow {\n                width: 6.5vw;\n                height: 6.5vw;\n                font-size: 6.5vw;\n            }\n        }\n\n        @media screen and (max-width: 767px){\n\n            .").concat(sliderClass, "-slider-container {\n                height: 380px;\n            }\n\n        }\n\n        .").concat(sliderClass, "-slide {\n            flex: 0 0 25%;\n            height: 100%;\n            opacity: 1; /* Opacit\u00E9 par d\u00E9faut pour tous les slides */\n        }\n\n        .").concat(sliderClass, "-slide.active {\n            opacity: 1; /* Opacit\u00E9 pour le slide actif */\n        }\n\n        .").concat(sliderClass, "-control {\n            display: flex;\n            justify-content: center;\n            margin-top: -60px;\n        }\n\n        .").concat(sliderClass, "-navigation label {\n            width: 11px;\n            height: 11px;\n            margin: 5px;\n            cursor: pointer;\n            background-color: #333;\n            opacity: 0.6;\n            border-radius: 50%;\n            display: inline-block;\n            box-shadow: 0 0 1px 1px white;\n            font-family: Arial, sans-serif; \n        }\n\n        .").concat(sliderClass, "-navigation label.active {\n            opacity: 0.6; /* Opacit\u00E9 pour le bouton actif */\n        }\n\n        .").concat(sliderClass, "-navigation label:hover{\n\n            background-color: #0056b3; \n\n        }\n\n        .").concat(sliderClass, "-radio {\n            display: none;\n        }\n\n        .").concat(sliderClass, "-pause {\n\n            z-index: 1000;\n            margin-left:10px;\n\n        }\n\n        .").concat(sliderClass, "-pause-checkbox{\n\n            display:none;\n        }\n\n        .").concat(sliderClass, "-button-label{\n            display: flex;\n            justify-content: center;\n            align-items: center;\n            padding: 2px 0px;\n            width: 28px;\n            height: 28px;\n            background-color: #333;\n            color: #FFFFFF; \n            border: none; \n            border-radius: 4px;\n            cursor: pointer;\n            text-decoration: none; \n            transition: background-color 0.3s; \n            opacity: 0.6;\n            user-select: none;\n            box-shadow: 0 0 1px 1px white;\n            margin: 0px;\n            margin-right:10px;\n        }\n\n        .").concat(sliderClass, "-button-label:hover{\n            background-color: #0056b3; \n        }\n\n        .").concat(sliderClass, "-pause-label:active {\n            background-color: #004299; \n            transform: translateY(1px);\n            font-family: Arial, sans-serif; \n        }\n\n        .").concat(sliderClass, "-aboutinfo {\n            position: fixed;\n            top: 0;\n            left: 0;\n            right: 0;\n            bottom: 0;\n            background-color: rgba(0, 0, 0, 0.7);\n            z-index: 9999;\n            display: flex;\n            align-items: center;\n            justify-content: center;\n        }\n        ");
         document.head.appendChild(style);
     }
     return StuSliderCss;

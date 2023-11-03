@@ -51,6 +51,25 @@ class StuSlider{
 
     }
 
+    // Créez une fonction pour ajouter la balise <link> au header
+    addFontAwesome() {
+
+        const scriptElement = document.createElement('script');
+        scriptElement.src = 'https://kit.fontawesome.com/e16b28c453.js';
+        scriptElement.crossOrigin = 'anonymous';
+
+        // Sélectionnez le <head> de votre document
+        const headElement = document.head;
+
+        // Ajoutez le script au <head>
+        if (headElement) {
+            headElement.appendChild(scriptElement);
+        } else {
+            console.error("Le <head> de la page n'a pas été trouvé.");
+        }
+    }
+
+
     displayAbout() {
         if (this.showAbout){
             // create about 
@@ -105,12 +124,12 @@ class StuSlider{
             // create left arrow div
             this.leftArrowDiv = document.createElement('div');
             this.leftArrowDiv.className = `${this.sliderClassPrefix}-left-arrow`;
-            this.leftArrowDiv.innerHTML = '&#x25C0;';
+            this.leftArrowDiv.innerHTML = '<i class="fa-solid fa-caret-left"></i>';
             this.leftArrowDiv.onclick = () => this.goToPreviousSlide();
             // create right arrow div
             this.rightArrowDiv = document.createElement('div');
             this.rightArrowDiv.className = `${this.sliderClassPrefix}-right-arrow`;
-            this.rightArrowDiv.innerHTML = '&#x25B6;';
+            this.rightArrowDiv.innerHTML = '<i class="fa-solid fa-caret-right"></i>';
             this.rightArrowDiv.onclick = () => this.goToNextSlide();
         }
         if (this.showArrow && this.slides.length > 1) {
@@ -178,16 +197,16 @@ class StuSlider{
             this.pauseLabel = document.createElement('label');
             this.pauseLabel.classList.add(`${this.sliderClassPrefix}-button-label`);
             this.pauseLabel.htmlFor = `${this.sliderClassPrefix}-pause-input`;
-            this.pauseLabel.innerHTML= "\u23F8";
+            this.pauseLabel.innerHTML= '<i class="fa-solid fa-pause"></i>';
 
             // pause event (check / uncheck)
             this.pauseInput.addEventListener('change', () => {
                 // pause or play
                 if (this.pauseInput.checked) {
-                    this.pauseLabel.innerHTML = "\u23F5";
+                    this.pauseLabel.innerHTML = '<i class="fa-solid fa-pause"></i>';
                     clearInterval(this.autoSlideTimer ?? 0);
                 } else {
-                    this.pauseLabel.innerHTML = "\u23F8";
+                    this.pauseLabel.innerHTML = '<i class="fa-solid fa-play"></i>';
                     this.resetAutoSlideTimer();
                 }
             });
@@ -207,6 +226,8 @@ class StuSlider{
         // create control div
         this.controlDiv = document.createElement('div');
         this.controlDiv.className = `${this.sliderClassPrefix}-control`;
+
+        this.addFontAwesome();
 
         this.displayDots();
 
@@ -311,7 +332,7 @@ class StuSliderCss{
             transform: translateY(-50%);
             width: 1.5vw;
             height: 1.5vw;
-            font-size: 1.5vw;
+            font-size: 3vw;
             opacity: 0.6;
             color: #333;
             cursor: pointer;
@@ -391,6 +412,7 @@ class StuSliderCss{
             border-radius: 50%;
             display: inline-block;
             box-shadow: 0 0 1px 1px white;
+            font-family: Arial, sans-serif; 
         }
 
         .${sliderClass}-navigation label.active {
@@ -432,7 +454,6 @@ class StuSliderCss{
             border-radius: 4px;
             cursor: pointer;
             text-decoration: none; 
-            font-family: Arial, sans-serif; 
             transition: background-color 0.3s; 
             opacity: 0.6;
             user-select: none;
@@ -448,6 +469,7 @@ class StuSliderCss{
         .${sliderClass}-pause-label:active {
             background-color: #004299; 
             transform: translateY(1px);
+            font-family: Arial, sans-serif; 
         }
 
         .${sliderClass}-aboutinfo {
