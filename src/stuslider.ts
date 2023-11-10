@@ -18,11 +18,20 @@ class StuSlider{
     slides!: NodeListOf<Element>;
     slideWidthPercentage!: number;
 
+    PauseSvg: string;
+    PlaySvg: string;
+    NextSvg: string;
+    PrevSvg: string;
+
     constructor(private sliderClassPrefix: string, private delay: number, private sliderWidth: string, 
         private sliderHeight: string, private showArrow: boolean = true, private showDots: boolean = true, 
         private showPause: boolean = true, private showAbout: boolean = true, private defaultSlide: number = 0) 
     {
 
+        this.PauseSvg = '<svg xmlns="http://www.w3.org/2000/svg" height="512px" viewBox="0 0 512 512" width="512px"><path d="M224,402.08751V109.83125C224,104.3875 218.6,100 211.8,100h-71.6c-6.8,0-12.2,4.3875-12.2,9.83125V402.08751C128,407.53125,133.4,412,140.2,412h71.6c6.8,0,12.2,-4.3875,12.2,-9.91249z" fill="#ffffff" /><path d="M371.8,100h-71.6c-6.7,0-12.2,4.3875-12.2,9.83125V402.08751C288,407.53125,293.4,412,300.2,412h71.6c6.7,0,12.2,-4.3875,12.2,-9.91249V109.83125C384,104.3875,378.6,100,371.8,100Z" fill="#ffffff" /></svg>';
+        this.PlaySvg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M78.158003,51.843 25.842,82.048c-1.418,0.819-3.191,-0.206-3.191,-1.843V19.795c0,-1.638 1.773,-2.662 3.191,-1.843L78.158003,48.157c1.416997,0.819 1.416997,2.867 -9.99e-4,3.686z" fill="#ffffff"/></svg>';
+        this.NextSvg = this.PlaySvg
+        this.PrevSvg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M23.715376,51.843 76.031375,82.048c1.418,0.819 3.191,-0.205 3.191,-1.843V19.795c0,-1.638 -1.773,-2.661 -3.191,-1.843L23.714376,48.157c-1.418001,0.819 -1.418001,2.867 10e-4,3.686z" fill="#ffffff"/></svg>';
         // `autoSlideTimer` must be null in case of just 1 slide
         this.autoSlideTimer = null
 
@@ -50,25 +59,6 @@ class StuSlider{
         this.displaySlider();
 
     }
-
-    // Créez une fonction pour ajouter la balise <link> au header
-    addFontAwesome() {
-
-        const scriptElement = document.createElement('script');
-        scriptElement.src = 'https://kit.fontawesome.com/e16b28c453.js';
-        scriptElement.crossOrigin = 'anonymous';
-
-        // Sélectionnez le <head> de votre document
-        const headElement = document.head;
-
-        // Ajoutez le script au <head>
-        if (headElement) {
-            headElement.appendChild(scriptElement);
-        } else {
-            console.error("Le <head> de la page n'a pas été trouvé.");
-        }
-    }
-
 
     displayAbout() {
         if (this.showAbout){
@@ -124,12 +114,12 @@ class StuSlider{
             // create left arrow div
             this.leftArrowDiv = document.createElement('div');
             this.leftArrowDiv.className = `${this.sliderClassPrefix}-left-arrow`;
-            this.leftArrowDiv.innerHTML = '<i class="fa-solid fa-caret-left"></i>';
+            this.leftArrowDiv.innerHTML = this.PrevSvg;
             this.leftArrowDiv.onclick = () => this.goToPreviousSlide();
             // create right arrow div
             this.rightArrowDiv = document.createElement('div');
             this.rightArrowDiv.className = `${this.sliderClassPrefix}-right-arrow`;
-            this.rightArrowDiv.innerHTML = '<i class="fa-solid fa-caret-right"></i>';
+            this.rightArrowDiv.innerHTML = this.NextSvg;
             this.rightArrowDiv.onclick = () => this.goToNextSlide();
         }
         if (this.showArrow && this.slides.length > 1) {
@@ -197,16 +187,16 @@ class StuSlider{
             this.pauseLabel = document.createElement('label');
             this.pauseLabel.classList.add(`${this.sliderClassPrefix}-button-label`);
             this.pauseLabel.htmlFor = `${this.sliderClassPrefix}-pause-input`;
-            this.pauseLabel.innerHTML= '<i class="fa-solid fa-pause"></i>';
+            this.pauseLabel.innerHTML= this.PauseSvg;
 
             // pause event (check / uncheck)
             this.pauseInput.addEventListener('change', () => {
                 // pause or play
                 if (this.pauseInput.checked) {
-                    this.pauseLabel.innerHTML = '<i class="fa-solid fa-play"></i>';
+                    this.pauseLabel.innerHTML = this.PlaySvg;
                     clearInterval(this.autoSlideTimer ?? 0);
                 } else {
-                    this.pauseLabel.innerHTML = '<i class="fa-solid fa-pause"></i>';
+                    this.pauseLabel.innerHTML = this.PauseSvg;
                     this.resetAutoSlideTimer();
                 }
             });
@@ -226,8 +216,6 @@ class StuSlider{
         // create control div
         this.controlDiv = document.createElement('div');
         this.controlDiv.className = `${this.sliderClassPrefix}-control`;
-
-        this.addFontAwesome();
 
         this.displayDots();
 
@@ -339,7 +327,11 @@ class StuSliderCss{
             z-index: 1000;
             user-select: none;
             text-shadow: 0 0 5px white; 
-        }    
+            stroke: #333;
+            stroke-width: 3;
+            fill: none;
+            
+        }
 
         .${sliderClass}-left-arrow {
             left: 1.5%;
