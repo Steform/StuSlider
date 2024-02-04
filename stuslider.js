@@ -22,8 +22,10 @@ var StuSlider = /** @class */ (function () {
         this.autoSlideTimer = null;
         // setting up the default slide
         this.currentSlide = this.defaultSlide;
+    }
+    StuSlider.prototype.initialize = function () {
         // initiating styles
-        new StuSliderCss(sliderClassPrefix, sliderWidth, sliderHeight);
+        new StuSliderCss(this.sliderClassPrefix, this.sliderWidth, this.sliderHeight);
         if (!document.querySelector(".".concat(this.sliderClassPrefix, "-slider-container")) || !document.querySelector(".".concat(this.sliderClassPrefix, "-slider"))
             || !document.querySelector(".".concat(this.sliderClassPrefix, "-slide"))) {
             throw new Error("No slider container or slider found");
@@ -39,7 +41,7 @@ var StuSlider = /** @class */ (function () {
         this.slideWidthPercentage = 100 / this.slides.length;
         // display the slider
         this.displaySlider();
-    }
+    };
     StuSlider.prototype.displayAbout = function () {
         if (this.showAbout) {
             // create about 

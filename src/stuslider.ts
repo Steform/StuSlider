@@ -38,8 +38,14 @@ export class StuSlider{
         // setting up the default slide
         this.currentSlide = this.defaultSlide;
 
+
+
+    }
+
+    initialize() {
+
         // initiating styles
-        new StuSliderCss(sliderClassPrefix, sliderWidth, sliderHeight);
+        new StuSliderCss(this.sliderClassPrefix, this.sliderWidth, this.sliderHeight);
 
         if (!document.querySelector(`.${this.sliderClassPrefix}-slider-container`) || !document.querySelector(`.${this.sliderClassPrefix}-slider`)
             || !document.querySelector(`.${this.sliderClassPrefix}-slide`)) {

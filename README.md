@@ -17,7 +17,10 @@ To use the 'StuSlider' Class, you must import the 'stuslider.js' (and the source
 You can do that at the bottom of your page/view/template like this:
 
 ```html
-<script src="stuslider.js"></script>
+    <script type="module">
+            
+        import { StuSlider } from './stuslider.js';
+    </script>
 ```
 
 You can build a new script with `npm run build` after having installed the dependencies.
@@ -62,6 +65,8 @@ Here's an example of how to create a fullscreen instance of the slider using the
 
     const slider1 = new StuSlider(sliderClass='stu', sliderDelay=3000, sliderWidth='100%', sliderHeight='100vh', showArrow=1, showDots=1, showPause=1, showAbout=1);
 
+    slider1.initialize();
+
 </script>
 ```
 
@@ -71,6 +76,7 @@ or
 <script type="text/javascript">
 
     const slider1 = new StuSlider('stu',3000, '100%', '100vh');
+    slider1.initialize();
 
 </script>
 ```
@@ -95,6 +101,99 @@ Some parameters are optional and have default values:
 4. `showDots` => By default, the about button is visible (default is true), set to false if not needed.
 5. `showAbout` => By default, the about button is visible (default is true), set to false if not needed.
 6. `defaultSlide` => By default, the slider starts with the first slide (default value is  `0`), set to the slide number you want to start with if needed.
+
+## Compiling
+
+To compile the StuSlider project, you will need Node.js and npm (Node Package Manager) installed on your system. If you don't have them installed, follow the instructions below:
+
+### Installing Node.js and npm
+
+#### Windows:
+
+1. Download the Node.js installer from [nodejs.org](https://nodejs.org/).
+2. Run the installer and follow the on-screen instructions.
+3. Once installed, open a new command prompt or PowerShell window.
+
+#### Linux:
+
+1. Open a terminal.
+2. Run the following commands:
+    ```bash
+    sudo apt update
+    sudo apt install nodejs npm
+    ```
+
+### Installing Dependencies
+
+After installing Node.js and npm, navigate to the root folder of your StuSlider project using the terminal or command prompt.
+
+Run the following command to install the project dependencies:
+
+```bash
+npm install
+```
+
+This command will download and install all the necessary packages specified in your `package.json` file.
+
+### Building the Project
+
+Once the dependencies are installed, run the following command to build your StuSlider project:
+
+```bash
+npm run build
+```
+
+Certainly! Below is the section on compiling your StuSlider project, including instructions for installing npm, installing dependencies, and running the build command. I've provided examples for both Windows and Linux users:
+
+markdown
+
+## Compiling
+
+To compile the StuSlider project, you will need Node.js and npm (Node Package Manager) installed on your system. If you don't have them installed, follow the instructions below:
+
+### Installing Node.js and npm
+
+#### Windows:
+
+1. Download the Node.js installer from [nodejs.org](https://nodejs.org/).
+2. Run the installer and follow the on-screen instructions.
+3. Once installed, open a new command prompt or PowerShell window.
+
+#### Linux:
+
+1. Open a terminal.
+2. Run the following commands:
+    ```bash
+    sudo apt update
+    sudo apt install nodejs npm
+    ```
+
+### Installing Dependencies
+
+After installing Node.js and npm, navigate to the root folder of your StuSlider project using the terminal or command prompt.
+
+Run the following command to install the project dependencies:
+```bash
+npm install
+```
+
+This command will download and install all the necessary packages specified in your `package.json` file.
+Building the Project
+
+### Building the Project
+
+Once the dependencies are installed, run the following command to build your StuSlider project:
+```bash
+npm run build
+```
+
+This command triggers the build script defined in your `package.json`, generating the necessary files for your slider.
+
+After a successful build, you can find the compiled files in the specified output directory.
+
+Now you are ready to integrate the compiled StuSlider into your web project.
+
+Feel free to customize the instructions based on your specific project structure or requirements.
 
 ## Licence
 
