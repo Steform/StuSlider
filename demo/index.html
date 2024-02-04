@@ -56,7 +56,15 @@
             }
 
         </style>
-        
+        <!-- This script is for this demo, you can reproduce this on your project -->
+        <script type="module">
+            
+            import { StuSlider } from './stuslider.js';
+            /* create instance of the slider */
+            const slider1 = new StuSlider('stu', 6000, '100%', '100vh');
+
+
+        </script>
     </head>
     <body>
         <!-- first container that encapsulate all of the slider with stu-slider-container class -->
@@ -133,14 +141,6 @@
             </div>
         </div>    
     </body>
-    <script src="stuslider.js"></script>
     
-    <!-- This script is for this demo, you can reproduce this on your project -->
-    <script type="text/javascript">
 
-        /* create instance of the slider */
-        const slider1 = new StuSlider(sliderClass='stu', 6000, '100%', '100vh');
-
-
-    </script>
 </html>

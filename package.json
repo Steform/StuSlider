@@ -1,6 +1,6 @@
 {
   "name": "stuslider",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "## Origin",
   "main": "stuslider.js",
   "scripts": {
@@ -20,6 +20,10 @@
   },
   "homepage": "https://github.com/Steform/StuSlider#readme",
   "devDependencies": {
+    "@types/node": "^20.11.16",
     "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "undici-types": "^6.6.0"
   }
 }

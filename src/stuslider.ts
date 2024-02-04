@@ -1,4 +1,4 @@
-class StuSlider{
+export class StuSlider{
 
     aboutDiv!: HTMLElement;
     aboutP!: HTMLParagraphElement;
@@ -168,41 +168,43 @@ class StuSlider{
 
     displayPauseDiv() {
         if (this.showPause){
+            if (this.delay != 0){
 
-            // create pause div
-            this.pauseDiv = document.createElement('div');
-            this.pauseDiv.className = `${this.sliderClassPrefix}-pause`;
-            this.pauseDiv.style.zIndex = "1000";
-            this.pauseDiv.style.marginLeft = "10px";
+                // create pause div
+                this.pauseDiv = document.createElement('div');
+                this.pauseDiv.className = `${this.sliderClassPrefix}-pause`;
+                this.pauseDiv.style.zIndex = "1000";
+                this.pauseDiv.style.marginLeft = "10px";
 
-            // create pause div
-            this.pauseInput = document.createElement('input');
-            this.pauseInput.type = "checkbox";
-            this.pauseInput.className = `${this.sliderClassPrefix}-pause-checkbox`;
-            this.pauseInput.checked = false;
-            this.pauseInput.id = `${this.sliderClassPrefix}-pause-input`;
-            this.pauseInput.style.display = "none";
+                // create pause div
+                this.pauseInput = document.createElement('input');
+                this.pauseInput.type = "checkbox";
+                this.pauseInput.className = `${this.sliderClassPrefix}-pause-checkbox`;
+                this.pauseInput.checked = false;
+                this.pauseInput.id = `${this.sliderClassPrefix}-pause-input`;
+                this.pauseInput.style.display = "none";
 
-            // create pause label
-            this.pauseLabel = document.createElement('label');
-            this.pauseLabel.classList.add(`${this.sliderClassPrefix}-button-label`);
-            this.pauseLabel.htmlFor = `${this.sliderClassPrefix}-pause-input`;
-            this.pauseLabel.innerHTML= this.PauseSvg;
+                // create pause label
+                this.pauseLabel = document.createElement('label');
+                this.pauseLabel.classList.add(`${this.sliderClassPrefix}-button-label`);
+                this.pauseLabel.htmlFor = `${this.sliderClassPrefix}-pause-input`;
+                this.pauseLabel.innerHTML= this.PauseSvg;
 
-            // pause event (check / uncheck)
-            this.pauseInput.addEventListener('change', () => {
-                // pause or play
-                if (this.pauseInput.checked) {
-                    this.pauseLabel.innerHTML = this.PlaySvg;
-                    clearInterval(this.autoSlideTimer ?? 0);
-                } else {
-                    this.pauseLabel.innerHTML = this.PauseSvg;
-                    this.resetAutoSlideTimer();
-                }
-            });
+                // pause event (check / uncheck)
+                this.pauseInput.addEventListener('change', () => {
+                    // pause or play
+                    if (this.pauseInput.checked) {
+                        this.pauseLabel.innerHTML = this.PlaySvg;
+                        clearInterval(this.autoSlideTimer ?? 0);
+                    } else {
+                        this.pauseLabel.innerHTML = this.PauseSvg;
+                        this.resetAutoSlideTimer();
+                    }
+                });
+            }
 
         }
-        if (this.showPause && this.slides.length > 1) {
+        if (this.showPause && this.slides.length > 1 && this.delay != 0) {
             this.pauseDiv.appendChild(this.pauseInput);
             this.pauseDiv.appendChild(this.pauseLabel);
             this.controlDiv.appendChild(this.pauseDiv);
@@ -273,7 +275,9 @@ class StuSlider{
 
     resetAutoSlideTimer() {
         clearInterval(this.autoSlideTimer ?? 0);
-        this.autoSlideTimer = setInterval(this.goToNextSlide.bind(this), this.delay);
+        if (this.delay !== 0) {
+            this.autoSlideTimer = window.setInterval(() => this.goToNextSlide(), this.delay);
+        }
     }
 
     updateActiveSlide() {
@@ -292,7 +296,7 @@ class StuSlider{
 
 }
 
-class StuSliderCss{
+export class StuSliderCss{
 
     constructor(sliderClass: string, sliderWidth: string, sliderHeight: string){
 
@@ -451,7 +455,6 @@ class StuSliderCss{
             user-select: none;
             box-shadow: 0 0 1px 1px white;
             margin: 0px;
-            margin-right:10px;
         }
 
         .${sliderClass}-button-label:hover{
@@ -462,6 +465,13 @@ class StuSliderCss{
             background-color: #004299; 
             transform: translateY(1px);
             font-family: Arial, sans-serif; 
+        }
+
+        .${sliderClass}-about {
+
+            z-index: 1000;
+            margin-left:10px;
+
         }
 
         .${sliderClass}-aboutinfo {
