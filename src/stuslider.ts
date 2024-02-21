@@ -380,14 +380,6 @@ export class StuSliderCss{
             }
         }
 
-        @media screen and (max-width: 767px){
-
-            .${sliderClass}-slider-container {
-                height: 380px;
-            }
-
-        }
-
         .${sliderClass}-slide {
             flex: 0 0 25%;
             height: 100%;
