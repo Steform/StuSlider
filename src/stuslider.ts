@@ -328,9 +328,9 @@ export class StuSliderCss{
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            width: 1.5vw;
-            height: 1.5vw;
-            font-size: 3vw;
+            width: 6vw;
+            height: 6vw;
+            font-size: 6vw;
             opacity: 0.6;
             color: #333;
             cursor: pointer;
@@ -342,6 +342,80 @@ export class StuSliderCss{
             fill: none;
             
         }
+
+        @media (max-width: 480px) and (orientation: landscape) {
+            .${sliderClass}-left-arrow,
+            .${sliderClass}-right-arrow {
+                width: 6.5vw;
+                height: 6.5vw;
+                font-size: 6.5vw;
+            }
+        }
+
+        @media (max-width: 767px) and (orientation: portrait){
+            .${sliderClass}-left-arrow, 
+            .${sliderClass}-right-arrow {
+                width: 10vw;
+                height: 10vw;
+                font-size: 10vw;
+            }
+        }
+
+        @media (min-width: 768px) and (orientation: portrait) {
+
+            width: 6vw;
+            height: 6vw;
+            font-size: 6vw;
+
+        }
+
+        @media (min-width: 768px) and (orientation: landscape) {
+            .${sliderClass}-left-arrow, 
+            .${sliderClass}-right-arrow {
+                width: 4vw;
+                height: 4vw;
+                font-size: 4vw;
+            }
+        }
+
+        @media (min-width: 1600px) and (orientation: landscape) {
+            .${sliderClass}-left-arrow, 
+            .${sliderClass}-right-arrow {
+                width: 3vw;
+                height: 3vw;
+                font-size: 3vw;
+            }
+        }
+
+        @media (min-width: 1600px) and (orientation: portrait) {
+            .${sliderClass}-left-arrow, 
+            .${sliderClass}-right-arrow {
+                width: 1.8vw;
+                height: 1.8vw;
+                font-size: 1.8vw;
+            }
+        }
+
+        @media (min-width: 3200px) and (orientation: landscape) {
+            .${sliderClass}-left-arrow, 
+            .${sliderClass}-right-arrow {
+                width: 3vw;
+                height: 3vw;
+                font-size: 3vw;
+            }
+        }
+
+        @media (min-width: 3200px) and (orientation: portrait) {
+            .${sliderClass}-left-arrow, 
+            .${sliderClass}-right-arrow {
+                width: 1.8vw;
+                height: 1.8vw;
+                font-size: 1.8vw;
+            }
+        }
+
+    
+    
 
         .${sliderClass}-left-arrow {
             left: 1.5%;
@@ -362,23 +436,7 @@ export class StuSliderCss{
             color: #0056b3; 
         }
 
-        @media (max-width: 768px) {
-            .${sliderClass}-left-arrow,
-            .${sliderClass}-right-arrow {
-                width: 3vw;
-                height: 3vw;
-                font-size: 3vw;
-            }
-        }
 
-        @media (max-width: 480px) {
-            .${sliderClass}-left-arrow,
-            .${sliderClass}-right-arrow {
-                width: 6.5vw;
-                height: 6.5vw;
-                font-size: 6.5vw;
-            }
-        }
 
         .${sliderClass}-slide {
             flex: 0 0 25%;
